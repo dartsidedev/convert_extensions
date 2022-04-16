@@ -1,7 +1,9 @@
 name: convert_extensions
 description: Common convert methods exposed as static extensions method from the Dart core library and the convert package. Base64, ASCII, UTF8, Latin1, JSON, and more.
 version: 0.1.0
-# homepage: https://www.example.com
+homepage: https://github.com/vincevargadev
+repository: https://github.com/dartsidedev/convert_extensions
+issue_tracker: https://github.com/dartsidedev/convert_extensions/issues
 
 environment:
   sdk: '>=2.15.1 <3.0.0'

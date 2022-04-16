@@ -42,6 +42,8 @@ jobs:
       image:  google/dart
     steps:
       - uses: actions/checkout@v2
+      - name: Get dependencies
+        run: dart pub get
       - name: Verify example runs correctly
         working-directory: ./example
         run: dart convert_extensions_example.dart
