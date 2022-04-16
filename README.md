@@ -22,6 +22,10 @@ Encode or decode with UTF8, Base64, JSON (and many more) with a simple and expre
 
 **If you enjoy using this package, a thumbs-up on [pub.dev](https://pub.dev/packages/convert_extensions) would be highly appreciated! 👍💙.**
 
+## Resources
+
+* [`dart:convert` core library](https://api.dart.dev/stable/dart-convert/dart-convert-library.html) 
+* [`package:convert` package by the Dart team](https://pub.dev/packages/convert) 
 
 ## Motivation
 

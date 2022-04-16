@@ -1,3 +1,8 @@
+## 1.0.0+1
+
+- Further Docs improvement
+- GitHub Actions fixed?
+
 ## 1.0.0
 
 - Docs finished
