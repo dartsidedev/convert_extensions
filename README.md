@@ -7,7 +7,7 @@ based on the [`dart:convert` core library](https://api.dart.dev/stable/dart-conv
 the [`package:convert` package by the Dart team](https://pub.dev/packages/convert),
 and other conversion methods that are found in the Dart language.
 
-These extension methods make it easier to read and write code that uses conversions is it hides the conversion complexity behind expressive getters and methods.
+These extension methods make it easier to read and write code that uses conversions as it hides the conversion complexity behind expressive getters and methods.
 
 Encode or decode with UTF8, Base64, JSON (and many more) with a simple and expressive API.
 
@@ -25,12 +25,69 @@ Encode or decode with UTF8, Base64, JSON (and many more) with a simple and expre
 
 ## Motivation
 
-TODO:
-* old api is clunky and I had to look up the exact conversion every time I used these...
-* with this package, code reads better, auto complete and IDE support much better
-* todo add good examples, chaining, combinations, etc
-* clarify that it is just extension methods, func comes from either the dart core or convert package
+Encoding and decoding directly with the Dart core library (`dart:convert` and others) and the `package:convert`
+by the Dart team can be clunky, and it's sometimes hard to remember how to use those APIs.
+
+Via extension methods, this package makes it easier to convert via encoders and decoders.
+
+Keep in mind, that this package only provides static extension methods, and the actual conversion is still done via the
+the Dart core library (`dart:convert` and others) and the `package:convert` package by the Dart team.
 
 ## Usage
 
-TODO:
+Just import the package, and the static extension methods will be added.
+
+```dart
+import 'package:convert_extensions/convert_extensions.dart';
+
+void main() {
+  // ASCII
+  print([99, 111, 110, 118, 101, 114, 116].asciiDecoded);
+  print('convert'.asciiEncoded);
+  
+  // Base64
+  print([99, 111, 110, 118, 101, 114, 116].base64Encoded);
+  print('Y29udmVydA=='.base64Decoded);
+  
+  // JSON
+  print('{"convert":true}'.jsonDecoded);
+  print({'convert': true}.jsonEncoded);
+  
+  // UTF8
+  print('convert'.utf8Encoded);
+  print([99, 111, 110, 118, 101, 114, 116].utf8Decoded);
+  
+  // URI
+  print('convert%20this'.uriDecoded);
+  print('convert this'.uriEncoded);
+  
+  // URI query component
+  print('convert+this'.uriQueryComponentDecoded);
+  print('convert this'.uriQueryComponentEncoded);
+  
+  // HEX
+  print('636f6e76657274'.hexDecoded);
+  print([99, 111, 110, 118, 101, 114, 116].hexEncoded);
+  
+  // Percent
+  print('hi/+'.percentDecoded);
+  print([104, 105, 47, 43].percentEncoded);
+}
+```
+
+You can also combine these getters. As an example, this is how you would create a basic auth header:
+
+```dart
+void main() {
+  const username = 'johndoe';
+  const password = r'p@$$w0rd';
+  
+  final key = '$username:$password'.utf8Encoded.base64Encoded;
+  
+  print('Basic $key');
+}
+```
+
+For all extension methods, see the [API reference](https://pub.dev/documentation/convert_extensions/latest/).
+
+You can see more [usage examples in the `test` folder](https://github.com/dartsidedev/convert_extensions/tree/main/test).

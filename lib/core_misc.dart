@@ -1,6 +1,6 @@
 /// A collection of static extension methods that expose common conversion
 /// methods from the Dart core library (expect those from `dart:convert`).
-library misc;
+library core_misc;
 
 extension UriDecoded on String {
   String get uriDecoded {
